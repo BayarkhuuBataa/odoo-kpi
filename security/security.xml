@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="heqi_module_test_staff" model="res.groups">
+            <field name="name">HQ测试</field>
+            <field name="sequence">0</field>
+            <field name="description">Heqi 测试.</field>
+            <field name="visible" eval="0"/>
+        </record>
+    </data>
+</odoo>

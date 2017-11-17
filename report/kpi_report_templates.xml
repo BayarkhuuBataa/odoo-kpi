@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_layout">
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+
+        <t t-raw="0" />
+    </template>
+
+    <template id="kpi_report">
+        <t t-call="report.html_container">
+            <t t-call="hq_kpi.custom_layout">
+                <div class="page">
+                    <style scoped="scoped">
+                        body {
+                        font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+                        color: #4f6b72;
+                        background: #E6EAE9;
+                        }
+
+                        a {
+                        color: #c75f3e;
+                        }
+
+                        #mytable {
+                        margin: 0 auto;
+                        text-align: center;
+                        }
+
+                        caption {
+                        padding: 0 0 5px 0;
+
+                        font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+                        text-align: right;
+                        }
+
+                        th {
+                        font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+                        color: #4f6b72;
+                        border-right: 1px solid #C1DAD7;
+                        border-bottom: 1px solid #C1DAD7;
+                        border-top: 1px solid #C1DAD7;
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                        text-align: center;
+                        padding: 6px 6px 6px 12px;
+                        text-align: center;
+                        }
+
+                        th.nobg {
+                        border-top: 0;
+                        border-left: 0;
+                        border-right: 1px solid #C1DAD7;
+                        background: none;
+                        }
+
+                        td {
+                        border-right: 1px solid #C1DAD7;
+                        border-bottom: 1px solid #C1DAD7;
+                        background: #fff;
+                        font-size:11px;
+                        padding: 6px 6px 6px 12px;
+                        color: #4f6b72;
+                        text-align: center;
+                        }
+
+
+                        td.alt {
+                        background: #F5FAFA;
+                        color: #797268;
+                        text-align: center;
+                        }
+
+                        td.alt_com{
+                        background: #F5FAFA;
+                        color: #4f6b72;
+                        text-align: center;
+                        font-family: "Heiti SC";
+                        font-size: 14px;
+                        font-weight: bold;
+                        }
+
+                        td.alttime {
+                        background: #F5FAFA;
+                        color: #797268;
+                        text-align: left;
+                        cursor: pointer;
+                        }
+                        th.spec {
+                        border-left: 1px solid #C1DAD7;
+                        border-top: 0;
+                        background: #fff;
+                        font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+                        text-align: center;
+                        }
+
+                        th.specalt {
+                        border-left: 1px solid #C1DAD7;
+                        border-top: 0;
+                        font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+                        color: #797268;
+                        }
+
+                        .report_h2{
+                        text-align: center;
+                        margin: 0 auto;
+                        }
+                    </style>
+                    <t t-if="data['data'] == 'all'">
+                        <t t-call="hq_kpi.report_all_kpi"/>
+                    </t>
+                    <t t-if="data['data'] == 'team'">
+                        <t t-call="hq_kpi.report_team_kpi"/>
+                    </t>
+                    <t t-if="data['data'] == 'type'">
+                        <t t-call="hq_kpi.report_type_kpi"/>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+
+    <template id="report_all_kpi">
+        <t t-if="data['type'] == 'day'">
+            <h2 class="report_h2">KPI日数据汇总</h2>
+        </t>
+        <t t-if="data['type'] == 'month'">
+            <h2 class="report_h2">KPI月数据汇总</h2>
+        </t>
+        <table id="mytable" cellspacing="0">
+            <tr>
+                <th scope="col" colspan="2">
+                    当前日期：<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                </th>
+                <th scope="col">销售额</th>
+                <th scope="col">毛利</th>
+                <th scope="col">毛利率(%)</th>
+                <th scope="col">回款</th>
+                <th scope="col">应收账款</th>
+                <th scope="col">库存价值</th>
+                <!--<th scope="col">动态周转</th>-->
+            </tr>
+            <t t-foreach="docs" t-as="o">
+                <tr>
+                    <td scope="row" abbr="Model" class="alt">
+                        <span t-esc="o[0]"></span>
+                    </td>
+                    <td scope="row" abbr="Model" class="alt">
+                        <span t-esc="o[7]"></span>
+                    </td>
+                    <td class="spec">
+                        <span t-esc="o[1]"></span>
+                    </td>
+                    <td class="spec">
+                        <span t-esc="o[2]"></span>
+                    </td>
+                    <td class="spec">
+                        <span t-esc="o[3]"></span>
+                    </td>
+                    <td class="spec">
+                        <span t-esc="o[4]"></span>
+                    </td>
+                    <td class="spec">
+                        <span t-esc="o[6]"></span>
+                    </td>
+                    <td class="spec">
+                        <span t-esc="o[5]"></span>
+                    </td>
+                    <!--<td class="spec">-->
+                        <!--<span t-esc="get_turn_over(data['type'],o[0],o[8],'','')[0]"></span>-->
+                    <!--</td>-->
+                </tr>
+            </t>
+        </table>
+    </template>
+
+
+    <template id="report_team_kpi">
+        <t t-if="data['type'] == 'day'">
+            <h2 class="report_h2">KPI团队日数据汇总</h2>
+            <table id="mytable" cellspacing="0">
+                <tr>
+                    <th scope="col" rowspan="2" colspan="2">
+                        当前日期：<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </th>
+                    <th colspan="4" scope="col" class="alt">销售额</th>
+                    <th colspan="4" scope="col" class="alt">毛利</th>
+                    <th colspan="2" scope="col" class="alt">毛利率</th>
+                    <th colspan="4" scope="col" class="alt">回款</th>
+                    <th colspan="2" scope="col" class="alt">应收账款</th>
+                    <th colspan="2" scope="col" class="alt">库存价值</th>
+                    <th colspan="3" scope="col" class="alt">动态周转</th>
+                </tr>
+                <tr>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                    <td class="alt">今日(%)</td>
+                    <td class="alt">总计(%)</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">平均</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                </tr>
+
+                <t t-foreach="docs" t-as="doc">
+                    <tr>
+                        <td colspan="23" class="alt_com">
+                            <span t-esc="doc['company']"></span>
+                        </td>
+                    </tr>
+                    <t t-foreach="doc['value']" t-as="o">
+                        <tr>
+                            <td scope="row" abbr="Model" class="alt">
+                                <span t-esc="o[0]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="alt">
+                                <span t-esc="o[1]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="o[2]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[9]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[15]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[19]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="o[3]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[10]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[16]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[20]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="o[4]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[11]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="o[5]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="o[12]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[17]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[21]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[6]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[13]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="o[7]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[14]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="get_turn_over(data['type'],o[0],'',o[22],'')[0]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="o[18]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="get_turn_over(data['type'],o[0],'',o[22],'')[1]"></span>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </table>
+        </t>
+        <t t-if="data['type'] == 'month'">
+            <table id="mytable" cellspacing="0">
+                <h2 class="report_h2">KPI团队月数据汇总</h2>
+                <tr>
+                    <th scope="col" rowspan="2" colspan="2">
+                        当前日期：<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </th>
+                    <th colspan="3" scope="col">销售额</th>
+                    <th colspan="3" scope="col">毛利</th>
+                    <th colspan="1" scope="col">毛利率(%)</th>
+                    <th colspan="3" scope="col">回款</th>
+                    <th colspan="1" scope="col">应收账款</th>
+                    <th colspan="1" scope="col">库存价值</th>
+                    <th colspan="3" scope="col">动态周转</th>
+                </tr>
+                <tr>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                    <td class="alt">总计(%)</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">平均</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">目标</td>
+                    <td class="alt">完成率(%)</td>
+                </tr>
+                <t t-set="index" t-value="1"/>
+                <t t-foreach="docs" t-as="o">
+                    <tr class="parent" t-attf-id="row_#{index}">
+                        <td scope="row" abbr="Model" class="alttime" colspan="17">
+                            <img src='/web_kanban/static/src/img/minus-icon.png'/>
+                            <span t-esc="o['time']"></span>
+                        </td>
+                    </tr>
+                    <t t-foreach="o['value']" t-as="c">
+                        <tr t-attf-class="child_row_#{index}">
+                            <td colspan="17" class="alt_com">
+                                <span t-esc="c['company']"></span>
+                            </td>
+                        </tr>
+                        <t t-foreach="c['value']" t-as="l">
+                            <tr t-attf-class="child_row_#{index}">
+                                <td scope="row" abbr="Model" class="alt">
+                                    <span t-esc="l[0]"></span>
+                                </td>
+                                <td class="alt">
+                                    <span t-esc="l[1]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[2]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[8]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[12]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[3]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[9]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[13]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[4]"></span>
+                                </td>
+                                <td scope="row" abbr="Model" class="spec">
+                                    <span t-esc="l[5]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[10]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[14]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[7]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[6]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="get_turn_over(data['type'],l[0],'',l[15],'')[0]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="l[11]"></span>
+                                </td>
+                                <td class="spec">
+                                    <span t-esc="get_turn_over(data['type'],l[0],'',l[15],'')[1]"></span>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                    <t t-set="index" t-value="index + 1"/>
+                </t>
+            </table>
+        </t>
+    </template>
+
+    <template id="report_type_kpi">
+        <t t-if="data['type'] == 'day'">
+            <h2 class="report_h2">KPI产品品类日数据汇总</h2>
+            <table id="mytable" cellspacing="0">
+                <tr>
+                    <th scope="col" rowspan="2" colspan="2">
+                        当前日期：<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </th>
+                    <th scope="col" colspan="2">销售额</th>
+                    <th scope="col" colspan="2">毛利</th>
+                    <th scope="col" colspan="2">毛利率</th>
+                    <th scope="col" colspan="2">回款</th>
+                    <th scope="col" colspan="2">应收账款</th>
+                    <th scope="col" colspan="2">库存价值</th>
+                    <th scope="col" colspan="1">动态周转</th>
+                </tr>
+                <tr>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">今日(%)</td>
+                    <td class="alt">总计(%)</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">总计</td>
+                    <td class="alt">今日</td>
+                    <td class="alt">平均</td>
+                    <td class="alt">总计</td>
+                </tr>
+                <t t-foreach="docs" t-as="o">
+                    <tr>
+                        <td scope="row" abbr="Model" class="alt">
+                            <span t-esc="o[0]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="alt">
+                            <span t-esc="o[1]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="spec">
+                            <span t-esc="o[2]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="o[9]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="spec">
+                            <span t-esc="o[3]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="o[10]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="spec">
+                            <span t-esc="o[4]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="o[11]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="spec">
+                            <span t-esc="o[5]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="spec">
+                            <span t-esc="o[12]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="o[6]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="o[13]"></span>
+                        </td>
+                        <td scope="row" abbr="Model" class="spec">
+                            <span t-esc="o[7]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="o[14]"></span>
+                        </td>
+                        <td class="spec">
+                            <span t-esc="get_turn_over(data['type'],o[0],'','',o[15])[0]"></span>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </t>
+
+        <t t-if="data['type'] == 'month'">
+            <h2 class="report_h2">KPI产品品类月数据汇总</h2>
+            <table id="mytable" cellspacing="0">
+                <tr>
+                    <th scope="col" colspan="2">
+                        当前日期：<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </th>
+                    <th scope="col">销售额</th>
+                    <th scope="col">毛利</th>
+                    <th scope="col">毛利率(%)</th>
+                    <th scope="col">回款</th>
+                    <th scope="col">应收账款</th>
+                    <th scope="col">库存价值</th>
+                    <th scope="col">动态周转</th>
+                </tr>
+                <t t-set="index" t-value="1"/>
+                <t t-foreach="docs" t-as="o">
+                    <tr class="parent" t-attf-id="row_#{index}">
+                        <td colspan="9" class="alttime">
+                            <img src='/web_kanban/static/src/img/minus-icon.png'/>
+                            <span t-esc="o['time']"></span>
+                        </td>
+                    </tr>
+                    <t t-foreach="o['value']" t-as="l">
+                        <tr t-attf-class="child_row_#{index}">
+                            <td scope="row" class="alt" abbr="Model">
+                                <span t-esc="l[0]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="alt">
+                                <span t-esc="l[1]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="l[2]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="l[3]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="l[4]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="l[5]"></span>
+                            </td>
+                            <td scope="row" abbr="Model" class="spec">
+                                <span t-esc="l[7]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="l[6]"></span>
+                            </td>
+                            <td class="spec">
+                                <span t-esc="get_turn_over(data['type'],l[0],'','',l[8])[0]"></span>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-set="index" t-value="index + 1"/>
+                </t>
+            </table>
+        </t>
+    </template>
+</odoo>

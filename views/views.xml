@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <record id="view_kpi_link" model="ir.ui.view">
+        <field name="name">kpi link</field>
+        <field name="model">hq.kpibyteam</field>
+        <field name="arch" type="xml">
+            <form string="Configure Sales" class="oe_form_configuration" name="sale_config_form">
+                <div id="kpi_main" position="inside" class="kpi_main">
+                  <div id="main1" class="main">
+                    <div class="main_href">
+                      <a class="href_link" onclick="goToLocation('day','all');">按日汇总全部数据</a>
+                    </div>
+                    <div class="main_desc">
+                      按"天"为单位汇总各项指标,仅展示本月每天汇总指标数据
+                    </div>
+                  </div>
+                  <div id="main2" class="main">
+                    <div class="main_href">
+                      <a  class="href_link" onclick="goToLocation('day','team');">按日汇总团队数据</a>
+                    </div>
+                    <div class="main_desc">
+                      以"天"为单位汇总各团队每天各维度数据，仅展示最近一天各团队汇总数据
+                    </div>
+                  </div>
+                  <div id="main3" class="main">
+                    <div class="main_href">
+                      <a class="href_link" onclick="goToLocation('day','type');">按日汇总品类数据</a>
+                    </div>
+                    <div class="main_desc">
+                      以"天"为单位查看产品品类的各维度数据，仅展示最近一天各品类汇总数据
+                    </div>
+                  </div>
+                  <div id="main4" class="main">
+                    <div class="main_href">
+                      <a class="href_link" onclick="goToLocation('month','all');">按月汇总全部数据</a>
+                    </div>
+                    <div class="main_desc">
+                      按"月"为单位汇总全部数据，展示全部月份汇总数据
+                    </div>
+                  </div>
+                  <div id="main5" class="main">
+                    <div class="main_href">
+                      <a class="href_link" onclick="goToLocation('month','team');">按月汇总团队数据</a>
+                    </div>
+                    <div class="main_desc">
+                      以"月"为单位汇总各团队每月各维度数据，展示全部月份汇总数据
+                    </div>
+                  </div>
+                  <div id="main6" class="main">
+                    <div class="main_href">
+                      <a class="href_link" onclick="goToLocation('month','type');">按月汇总品类数据</a>
+                    </div>
+                    <div class="main_desc">
+                      以"月"为单位查看产品品类每月各维度数据，展示全部月份汇总数据
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_kpi_report" model="ir.actions.act_window">
+        <field name="name">kpi report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hq.kpibyteam</field>
+        <field name="view_id" ref="view_kpi_link"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <menuitem name="hq_kpi" id="hq_kpi.menu_root"
+              web_icon="hq_kpi,static/description/icon.png"
+              groups="base.group_user" action="hq_kpi.action_kpi_report"/>
+
+
+
+
+  </data>
+</odoo>

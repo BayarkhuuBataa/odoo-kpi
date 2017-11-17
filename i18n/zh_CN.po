@@ -1,0 +1,206 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hq_kpi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-10 07:52+0000\n"
+"PO-Revision-Date: 2017-06-10 07:52+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_accounts_receivable
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_accounts_receivable
+msgid "Accounts receivable"
+msgstr "Accounts receivable"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_back_money
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_back_money
+msgid "Back money"
+msgstr "Back money"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.view_kpi_link
+msgid "Configure Sales"
+msgstr "配置销售"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_create_uid
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_create_uid
+msgid "Created by"
+msgstr "创建者"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_create_date
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_display_name
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_display_name
+#: model:ir.model.fields,field_description:hq_kpi.field_report_hq_kpi_kpi_report_display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_dynamic_turnover
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_dynamic_turnover
+msgid "Dynamic turnover"
+msgstr "Dynamic turnover"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_gross_margin
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_gross_margin
+msgid "Gross margin"
+msgstr "Gross margin"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_gross_profit
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_gross_profit
+msgid "Gross profit"
+msgstr "Gross profit"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_id
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_id
+#: model:ir.model.fields,field_description:hq_kpi.field_report_hq_kpi_kpi_report_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.report_type_kpi
+msgid "KPI产品品类日数据汇总"
+msgstr "KPI产品品类日数据汇总"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.report_type_kpi
+msgid "KPI产品品类月数据汇总"
+msgstr "KPI产品品类月数据汇总"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.report_team_kpi
+msgid "KPI团队日数据汇总"
+msgstr "KPI团队日数据汇总"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.report_team_kpi
+msgid "KPI团队月数据汇总"
+msgstr "KPI团队月数据汇总"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.report_all_kpi
+msgid "KPI日数据汇总"
+msgstr "KPI日数据汇总"
+
+#. module: hq_kpi
+#: model:ir.ui.view,arch_db:hq_kpi.report_all_kpi
+msgid "KPI月数据汇总"
+msgstr "KPI月数据汇总"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate___last_update
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam___last_update
+#: model:ir.model.fields,field_description:hq_kpi.field_report_hq_kpi_kpi_report___last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_write_uid
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_write_uid
+msgid "Last Updated by"
+msgstr "最后更新者"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_write_date
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_category_id
+msgid "Product Category"
+msgstr "产品类别"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_sale_count
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_sale_count
+msgid "Sale count"
+msgstr "Sale count"
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_kpi_report
+msgid "Sales Orders Statistics"
+msgstr "销售订单统计"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_team_id
+msgid "Sales Team"
+msgstr "销售团队"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_stock
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_stock
+msgid "Stock"
+msgstr "Stock"
+
+#. module: hq_kpi
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibycate_belong_date
+#: model:ir.model.fields,field_description:hq_kpi.field_hq_kpibyteam_belong_date
+msgid "belong date"
+msgstr "belong date"
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_hq_kpi
+msgid "hq.kpi"
+msgstr "KPI报表"
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_hq_kpi_report
+msgid "hq.kpi.report"
+msgstr "KPI报表"
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_hq_kpibycate
+msgid "hq.kpibycate"
+msgstr "hq.kpibycate"
+
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_hq_kpibyteam
+msgid "hq.kpibyteam"
+msgstr "hq.kpibyteam"
+
+#. module: hq_kpi
+#: model:ir.ui.menu,name:hq_kpi.menu_root
+msgid "hq_kpi"
+msgstr "KPI报表"
+
+#. module: hq_kpi
+#: model:ir.actions.act_window,name:hq_kpi.action_kpi_report
+msgid "kpi report"
+msgstr "kPI报表"
+
+#. module: hq_kpi
+#: model:ir.actions.report.xml,name:hq_kpi.report_kpiByTeam
+msgid "report"
+msgstr "报表"
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_report_hq_kpi_kpi_day_team_report
+msgid "report.hq_kpi.kpi_day_team_report"
+msgstr "团队日报表"
+
+#. module: hq_kpi
+#: model:ir.model,name:hq_kpi.model_report_hq_kpi_kpi_report
+msgid "report.hq_kpi.kpi_report"
+msgstr "KPI报表"
+

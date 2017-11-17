@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+		<data noupdate="1">
+			<record forcecreate="True" id="kpiteam" model="ir.cron">
+				<field name="name">run kpibyteam</field>
+				<field eval="True" name="active"/>
+				<field name="user_id" ref="base.user_root"/>
+				<field name="interval_number">1</field>
+				<field name="interval_type">minutes</field>
+				<field name="numbercall">-1</field>
+				<field eval="False" name="doall"/>
+				<field eval="'hq.kpi'" name="model"/>
+				<field eval="'run_kpibyteam_scheduler'" name="function"/>
+				<field eval="'(True,)'" name="args"/>
+				<field eval="2017-06-10 16:50:00" name="nextcall"/>
+			</record>
+
+			<record forcecreate="True" id="kpicate" model="ir.cron">
+				<field name="name">run kpibycate</field>
+				<field eval="True" name="active"/>
+				<field name="user_id" ref="base.user_root"/>
+				<field name="interval_number">1</field>
+				<field name="interval_type">minutes</field>
+				<field name="numbercall">-1</field>
+				<field eval="False" name="doall"/>
+				<field eval="'hq.kpi'" name="model"/>
+				<field eval="'run_kpibycate_scheduler'" name="function"/>
+				<field eval="'(True,)'" name="args"/>
+				<field eval="2017-06-10 16:50:00" name="nextcall"/>
+			</record>
+		</data>
+
+</openerp>

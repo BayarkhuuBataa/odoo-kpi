@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report id="report_kpiByTeam"
+        string="KPI报表"
+        model="hq.kpibyteam"
+        report_type="qweb-html"
+        file="hq_kpi.kpi_report"
+        name="hq_kpi.kpi_report"/>
+</odoo>

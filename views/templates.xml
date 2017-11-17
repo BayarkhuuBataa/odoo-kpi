@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!--<template id="assets_backend" name="report css" inherit_id="report.assets_common">-->
+            <!--<xpath expr="." position="inside">-->
+                <!--<link rel="stylesheet" href="/hq_kpi/static/src/css/kpiReport.css"/>-->
+            <!--</xpath>-->
+        <!--</template>-->
+<!--report.assets_editor-->
+    <template id="assets_js" name="report js" inherit_id="report.assets_editor">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/hq_kpi/static/src/js/kpiReport.js"></script>
+            </xpath>
+        </template>
+
+    <template id="assets_common" name="planner common assets" inherit_id="web.assets_common">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/hq_kpi/static/src/css/kpi.css"/>
+            <script type="text/javascript" src="/hq_kpi/static/src/js/kpi.js"></script>
+        </xpath>
+    </template>
+</odoo>
